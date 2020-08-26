@@ -19,7 +19,7 @@
   },
   "servers": [
     {
-      "url": "https://frida-sap-cloud-management.com/v2"
+      "url": "http://test-api-impl-spring.herokuapp.com/v2/"
     }
   ],
   "tags": [
