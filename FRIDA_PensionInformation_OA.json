@@ -35,6 +35,13 @@
   "paths": {
     "/Contract": {
       "get": {
+        "security": [
+          {
+            "oAuth2": [
+              "Contract"
+            ]
+          }
+        ],
         "tags": [
           "Contract"
         ],
@@ -99,12 +106,7 @@
           "404": {
             "description": "Contract not found"
           }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
+        }
       }
     }
   },
@@ -113,9 +115,7 @@
       "Date": {
         "type": "string",
         "format": "date",
-        "description": "Date in YYYY-DD-MM Format",
-        "example": "1992-02-12",
-        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        "description": "Date in YYYY-DD-MM Format"
       },
       "Contract": {
         "type": "object",
@@ -131,8 +131,7 @@
           "timestamp": {
             "type": "string",
             "format": "date-time",
-            "description": "Timestamp of Request",
-            "example": "2018-03-20T09:12:28Z"
+            "description": "Timestamp of Request"
           },
           "beginOfInsurance": {
             "$ref": "#/components/schemas/Date"
@@ -184,22 +183,16 @@
       }
     },
     "securitySchemes": {
-      "petstore_auth": {
+      "oAuth2": {
         "type": "oauth2",
         "flows": {
           "implicit": {
-            "authorizationUrl": "http://petstore.swagger.io/oauth/dialog",
+            "authorizationUrl": "https://test-api-impl-auth.herokuapp.com/auth/",
             "scopes": {
-              "write:pets": "modify pets in your account",
-              "read:pets": "read your pets"
+              "Contract": "Read contract information"
             }
           }
         }
-      },
-      "api_key": {
-        "type": "apiKey",
-        "name": "api_key",
-        "in": "header"
       }
     }
   }
