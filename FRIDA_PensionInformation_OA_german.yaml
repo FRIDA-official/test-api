@@ -1,0 +1,259 @@
+openapi: 3.0.1
+info:
+  title: FRIDA PensionSerivce
+  description: 'This is a proof of Concept API for demonstration purposes.  You can find out more about     FRIDA at [https://www.freeinsurancedata.de/](https://www.freeinsurancedata.de/) or on [https://github.com/FRIDA-official](https://github.com/FRIDA-official).      For this sample, you can use the api key `special-key` to test the authorization     filters.'
+  termsOfService: 'https://github.com/FRIDA-official'
+  contact:
+    email: anton.rott@accenture.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: 'http://test-api-impl-spring.herokuapp.com/v2/'
+tags:
+  - name: Contract
+    description: Everything about Contracts
+    externalDocs:
+      description: Find out more
+      url: 'https://www.freeinsurancedata.de/'
+paths:
+  /Contract:
+    get:
+      security:
+        - oAuth2:
+            - Contract
+      tags:
+        - Contract
+      summary: Get all Contracts
+      description: This get service returns all contracts available
+      operationId: getAllContracts
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contract'
+        '400':
+          description: Invalid status value
+          content: {}
+  '/Contract/{contractId}':
+    get:
+      tags:
+        - Contract
+      summary: Find Contract by ID
+      description: Returns a single Contract
+      operationId: getContractById
+      parameters:
+        - name: contractId
+          in: path
+          description: ID of Contract to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Contract not found
+components:
+  schemas:
+    Date:
+      type: string
+      format: date
+      description: Date in YYYY-DD-MM Format
+    Contract:
+      type: object
+      properties:
+        ArtderVersicherung:
+          type: string
+          example: "rente"
+        DatumderStandmitteilung:
+        Versicherungsbeginn:
+        DatumRentenbeginn:
+        aktuelleBeitragszahlungen:
+        AktuellesVorsorgevermögen:
+        Garantiezins:
+        ausgewiesenederzeitigenÜberschussbeteiligung:
+        derzeitigeGesamtverzinsung:
+        HöhedergarantiertenAltersrente:
+        HöhederAltersrentebeiderzeitigenÜberschussbeteiligungen:
+        HöhedergarantiertenAltersrentebeiFortzahlungderderzeitigenBeiträge:
+        HöhederAltersrentebeiderzeitigenÜberschussbeteiligungenbeiFortzahlungderderzeitigenBeiträge:
+        FondskapitalbeiFondswachstumvonXProzentbeiRentenbeginn:
+        FondskapitalbeiFondswachstumvonXProzentbeiRentenbeginnbeiFortzahlungderderzeitigenBeiträge:
+        HochrechnungdesgarantiertenAltersvorsorgevermögens:
+        HochrechnungdesAltersvorsorgevermögens:
+        Rentenfaktor:
+        AktuellerRentenfaktorjeZehnTausendEuroVorsorgeguthaben:
+        GarantierterRentenfaktorjeZehnTausendEuroVorsorgeguthaben:
+        aktuellejährlichgezahlteZulagen:
+        zulagen:
+          type: object
+          properties:
+            grundzulagen:
+              type: boolean
+            Kinderzulagen:
+              type: object
+              properties:
+                anzahlderKinderdieberücksichtigtwerden:
+                  type: integer
+        kinder:
+          type: object
+          properties:
+            anzahlderKinder:
+              type: integer
+            geburtsDatumDerKinder:
+              type: array
+              items:
+                $ref: '#/components/schemas/Date'
+  securitySchemes:
+    oAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test-api-impl-auth.herokuapp.com/auth/realms/baeldung/account/'
+          scopes:
+            Contract: Read contract informationopenapi: 3.0.1
+info:
+  title: FRIDA PensionSerivce
+  description: 'This is a proof of Concept API for demonstration purposes.  You can find out more about     FRIDA at [https://www.freeinsurancedata.de/](https://www.freeinsurancedata.de/) or on [https://github.com/FRIDA-official](https://github.com/FRIDA-official).      For this sample, you can use the api key `special-key` to test the authorization     filters.'
+  termsOfService: 'https://github.com/FRIDA-official'
+  contact:
+    email: anton.rott@accenture.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 0.0.1
+externalDocs:
+  description: Find out more about Swagger
+  url: 'http://swagger.io'
+servers:
+  - url: 'http://test-api-impl-spring.herokuapp.com/v2/'
+tags:
+  - name: Contract
+    description: Everything about Contracts
+    externalDocs:
+      description: Find out more
+      url: 'https://www.freeinsurancedata.de/'
+paths:
+  /Contract:
+    get:
+      security:
+        - oAuth2:
+            - Contract
+      tags:
+        - Contract
+      summary: Get all Contracts
+      description: This get service returns all contracts available
+      operationId: getAllContracts
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Contract'
+        '400':
+          description: Invalid status value
+          content: {}
+  '/Contract/{contractId}':
+    get:
+      tags:
+        - Contract
+      summary: Find Contract by ID
+      description: Returns a single Contract
+      operationId: getContractById
+      parameters:
+        - name: contractId
+          in: path
+          description: ID of Contract to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Contract not found
+components:
+  schemas:
+    Date:
+      type: string
+      format: date
+      description: Date in YYYY-DD-MM Format
+    Contract:
+      type: object
+      properties:
+        ArtderVersicherung:
+          type: string
+          example: "rente"
+        DatumderStandmitteilung:
+        Versicherungsbeginn:
+        DatumRentenbeginn:
+        aktuelleBeitragszahlungen:
+        AktuellesVorsorgevermögen:
+        Garantiezins:
+        ausgewiesenederzeitigenÜberschussbeteiligung:
+        derzeitigeGesamtverzinsung:
+        HöhedergarantiertenAltersrente:
+        HöhederAltersrentebeiderzeitigenÜberschussbeteiligungen:
+        HöhedergarantiertenAltersrentebeiFortzahlungderderzeitigenBeiträge:
+        HöhederAltersrentebeiderzeitigenÜberschussbeteiligungenbeiFortzahlungderderzeitigenBeiträge:
+        FondskapitalbeiFondswachstumvonXProzentbeiRentenbeginn:
+        FondskapitalbeiFondswachstumvonXProzentbeiRentenbeginnbeiFortzahlungderderzeitigenBeiträge:
+        HochrechnungdesgarantiertenAltersvorsorgevermögens:
+        HochrechnungdesAltersvorsorgevermögens:
+        Rentenfaktor:
+        AktuellerRentenfaktorjeZehnTausendEuroVorsorgeguthaben:
+        GarantierterRentenfaktorjeZehnTausendEuroVorsorgeguthaben:
+        aktuellejährlichgezahlteZulagen:
+        zulagen:
+          type: object
+          properties:
+            grundzulagen:
+              type: boolean
+            Kinderzulagen:
+              type: object
+              properties:
+                anzahlderKinderdieberücksichtigtwerden:
+                  type: integer
+        kinder:
+          type: object
+          properties:
+            anzahlderKinder:
+              type: integer
+            geburtsDatumDerKinder:
+              type: array
+              items:
+                $ref: '#/components/schemas/Date'
+  securitySchemes:
+    oAuth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: 'https://test-api-impl-auth.herokuapp.com/auth/realms/baeldung/account/'
+          scopes:
+            Contract: Read contract information
