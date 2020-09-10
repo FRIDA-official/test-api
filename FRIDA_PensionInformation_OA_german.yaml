@@ -14,12 +14,6 @@ externalDocs:
   url: 'http://swagger.io'
 servers:
   - url: 'http://test-api-impl-spring.herokuapp.com/v2/'
-tags:
-  - name: Contract
-    description: Everything about Contracts
-    externalDocs:
-      description: Find out more
-      url: 'https://www.freeinsurancedata.de/'
 paths:
   /RentenKalkulation:
     post:
@@ -27,7 +21,7 @@ paths:
         - oAuth2:
           - RenteKalkulieren
       tags:
-      - kalkulierung
+      - Kalkulierung
       operationId: berechneRente
       responses:
         '200':
