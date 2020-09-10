@@ -35,7 +35,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Request'  
+                $ref: '#/components/schemas/Response'  
 components:
   schemas:
     Geldbetrag:
