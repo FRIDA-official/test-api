@@ -138,6 +138,13 @@ components:
       type: oauth2
       flows:
         implicit:
-          authorizationUrl: 'https://test-api-impl-auth.herokuapp.com/auth/realms/baeldung/account/'
+          authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
           scopes:
             RenteKalkulieren: Read contract information
+            openid: OpenId subject
+        authorizationCode:
+          authorizationUrl: 'https://frida-demo.okta.com/oauth2/default/v1/authorize?nonce=kdkdkl'
+          tokenUrl: 'https://frida-demo.okta.com/oauth2/default/v1/token?nonce=kdkdkl'
+          scopes:
+            RenteKalkulieren: Read contract information
+            openid: OpenId subject
