@@ -29,7 +29,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response'  
+                $ref: '#/components/schemas/RentenSummeResponse'  
       requestBody:
         $ref: '#/components/requestBodies/RentenSummeRequest'
 components:
@@ -38,24 +38,38 @@ components:
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Request'
+            $ref: '#/components/schemas/RentenParameter'
       description: Alle zur Rentenkalkulation benötigten Attribute
       required: true
   schemas:
     Geldbetrag:
-      type: number
-      format: double
+      type: object
+      properties:
+        betrag:
+          type: number
+          format: double
+        währung:
+          type: string
+          format: string
+          example: 'EUR'
     Date:
       type: string
       format: date
       description: Date in YYYY-DD-MM Format
-    Response:
+    RentenSummeResponse:
       type: object
+      required:
+      - summe
       properties:
-        Summe:
-          type: number
-          format: double
-    Request:
+        responseUUID:
+          type: string
+          format: string
+        timestamp:
+          type: string
+          format: date-time
+        summe:
+          $ref: '#/components/schemas/Geldbetrag'
+    RentenParameter:
       type: object
       properties:
         ArtderVersicherung:
