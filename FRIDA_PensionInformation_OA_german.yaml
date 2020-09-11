@@ -30,7 +30,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'  
+      requestBody:
+        $ref: '#/components/requestBodies/RentenSummeRequest'
 components:
+  requestBodies:
+    RentenSummeRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Request'
+      description: Alle zur Rentenkalkulation benötigten Attribute
+      required: true
   schemas:
     Geldbetrag:
       type: number
