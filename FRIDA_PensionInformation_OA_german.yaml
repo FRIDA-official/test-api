@@ -29,7 +29,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/RentenSummeResponse'  
+                $ref: '#/components/schemas/RentenSummeResponse'
+        '403':
+          description: Authorisierungsfehler
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
+        '500':
+          description: Generischer Fehler
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorList'
       requestBody:
         $ref: '#/components/requestBodies/RentenSummeRequest'
 components:
@@ -69,6 +81,32 @@ components:
           format: date-time
         summe:
           $ref: '#/components/schemas/Geldbetrag'
+    ErrorList:
+      type: object
+      required:
+        - errors
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            required:
+              - code
+              - title
+              - detail
+            properties:
+              code:
+                type: string
+                description: The code of the error
+              title:
+                type: string
+                description: A displayable title of the error type
+              detail:
+                type: string
+                description: Detail of the error
+              meta:
+                type: object
+                description: Optional additional data for specific error types
     RentenParameter:
       type: object
       properties:
