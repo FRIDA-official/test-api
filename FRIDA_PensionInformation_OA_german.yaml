@@ -13,7 +13,7 @@ externalDocs:
   description: Hier folgt noch ein Verweis auf die externe Doku
   url: 'http://swagger.io'
 servers:
-  - url: 'http://test-api-impl-spring.herokuapp.com/v2/'
+  - url: 'https://test-api-impl-backend-jaxrs.herokuapp.com/v2/'
 paths:
   /RentenKalkulation:
     post:
