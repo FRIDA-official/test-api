@@ -55,19 +55,11 @@ components:
       required: true
   schemas:
     Geldbetrag:
-      type: object
-      properties:
-        betrag:
-          type: number
-          format: double
-        währung:
-          type: string
-          format: string
-          example: 'EUR'
+      $ref: 'https://raw.githubusercontent.com/FRIDA-official/test-api/master/FRIDA_Basetypes_OA3.yaml#/components/schemas/Amount'
     Date:
-      type: string
-      format: date
-      description: Date in YYYY-DD-MM Format
+      $ref: 'https://raw.githubusercontent.com/FRIDA-official/test-api/master/FRIDA_Basetypes_OA3.yaml#/components/schemas/Date'
+    ErrorList:
+      $ref: 'https://raw.githubusercontent.com/FRIDA-official/test-api/master/FRIDA_Basetypes_OA3.yaml#/components/schemas/ErrorList'
     RentenSummeResponse:
       type: object
       required:
@@ -81,32 +73,6 @@ components:
           format: date-time
         summe:
           $ref: '#/components/schemas/Geldbetrag'
-    ErrorList:
-      type: object
-      required:
-        - errors
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            required:
-              - code
-              - title
-              - detail
-            properties:
-              code:
-                type: string
-                description: The code of the error
-              title:
-                type: string
-                description: A displayable title of the error type
-              detail:
-                type: string
-                description: Detail of the error
-              meta:
-                type: object
-                description: Optional additional data for specific error types
     RentenParameter:
       type: object
       properties:
