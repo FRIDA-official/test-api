@@ -14,13 +14,13 @@ externalDocs:
   url: 'http://swagger.io'
 components:
   schemas:
-    Geldbetrag:
+    Amount:
       type: object
       properties:
-        betrag:
+        sum:
           type: number
           format: double
-        währung:
+        currency:
           type: string
           format: string
           example: 'EUR'
